@@ -1,4 +1,5 @@
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -39,11 +40,11 @@ const Footer = () => {
                   Internships
                 </a>
               </li>
-              <li>
-                <a href="/blog" className="text-muted-foreground hover:text-accent transition-colors text-sm">
-                  Blog
-                </a>
-              </li>
+               <li>
+                 <Link to="/blog" className="text-muted-foreground hover:text-accent transition-colors text-sm">
+                   Blog
+                 </Link>
+               </li>
             </ul>
           </div>
 
