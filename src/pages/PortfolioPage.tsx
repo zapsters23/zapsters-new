@@ -187,7 +187,7 @@ const PortfolioPage = () => {
                 <div className="grid grid-cols-3 gap-3 text-center text-xs">
                   <div className="glass-panel rounded-lg p-3">
                     <div className="text-xl font-bold text-accent mb-1">
-                      20+
+                      17+
                     </div>
                     <p className="text-[11px] text-muted-foreground">
                       Projects shipped
