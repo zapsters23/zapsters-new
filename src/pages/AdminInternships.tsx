@@ -7,8 +7,7 @@ import { getInternshipApplications, InternshipApplication } from "@/lib/internsh
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+import AdminNav from "@/components/AdminNav";
 import { 
   User, 
   Mail, 
@@ -110,23 +109,22 @@ const AdminInternships = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-background">
-        <Navigation />
-        <div className="container mx-auto px-4 pt-32 pb-16">
+        <AdminNav />
+        <div className="container mx-auto px-4 pt-16 pb-16">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto"></div>
             <p className="mt-4 text-muted-foreground">Loading internship applications...</p>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      <AdminNav />
       
-      <div className="container mx-auto px-4 pt-32 pb-16">
+      <div className="container mx-auto px-4 pt-16 pb-16">
         <div className="max-w-6xl mx-auto">
           <div className="mb-8">
             <h1 className="text-3xl font-bold mb-2">Internship Applications Admin</h1>
@@ -328,8 +326,6 @@ const AdminInternships = () => {
           </div>
         </div>
       </div>
-      
-      <Footer />
     </div>
   );
 };

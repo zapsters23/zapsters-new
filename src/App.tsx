@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
 const Index = lazy(() => import("./pages/Index"));
 const Blog = lazy(() => import("./pages/Blog"));
@@ -18,6 +19,8 @@ const AdminBlog = lazy(() => import("./pages/AdminBlog"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const Admin = lazy(() => import("./pages/Admin"));
 const AdminInternships = lazy(() => import("./pages/AdminInternships"));
+const Login = lazy(() => import("./pages/Login"));
+
 
 const queryClient = new QueryClient();
 
@@ -46,10 +49,16 @@ const App = () => (
             {/* Blog */}
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/admin/blog" element={<AdminBlog />} />
-            <Route path="/admin/quotes" element={<Admin />} />
-            <Route path="/admin/internships" element={<AdminInternships />} />
+            <Route path="/login" element={<Login />} />
+
+            {/* Admin */}
+            <Route element={<ProtectedRoute />}>
+              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/admin/blog" element={<AdminBlog />} />
+              <Route path="/admin/quotes" element={<Admin />} />
+              <Route path="/admin/internships" element={<AdminInternships />} />
+            </Route>
+
 
             <Route path="/services" element={<Services />} />
 

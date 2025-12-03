@@ -42,76 +42,52 @@ type InternshipTrack = {
 
 const tracks: InternshipTrack[] = [
   {
-    id: "fullstack",
-    title: "Full-Stack Web Engineering",
+    id: "webdevelopment",
+    title: "Web Development",
     badge: "Web · MERN · APIs",
     icon: Laptop2,
     level: "Intermediate",
     mode: ["Remote", "Hybrid"],
-    durationLabel: "6–12 weeks",
+    durationLabel: "1–4 weeks",
     description:
       "Build production-like web apps using modern stacks — from UI to APIs and basic DevOps.",
     bullets: ["React / Next.js", "Node / Nest.js", "DB & API design"],
   },
   {
-    id: "uiux",
-    title: "UI/UX & Product Design",
-    badge: "Figma · Systems · Motion",
-    icon: Palette,
-    level: "Beginner Friendly",
-    mode: ["Remote"],
-    durationLabel: "4–8 weeks",
-    description:
-      "Craft neuromorphic, futuristic interfaces, design systems, and interactive prototypes.",
-    bullets: ["Design systems", "Prototyping", "Design handoff"],
-  },
-  {
-    id: "cyber",
-    title: "Cybersecurity & Ethical Hacking",
+    id: "cybersecurity",
+    title: "Cybersecurity",
     badge: "Blue Team · VAPT",
     icon: Shield,
     level: "Intermediate",
     mode: ["Remote", "On-site"],
-    durationLabel: "6–10 weeks",
+    durationLabel: "1–4 weeks",
     description:
       "Hands-on exposure to securing systems, basic audits, and understanding attacker mindset.",
     bullets: ["Recon & basics", "Reporting", "Security best practices"],
   },
   {
-    id: "three3d",
-    title: "3D Animation & Motion for Web",
+    id: "uiux",
+    title: "UI/UX Designing",
+    badge: "Figma · Systems · Motion",
+    icon: Palette,
+    level: "Beginner Friendly",
+    mode: ["Remote"],
+    durationLabel: "1–4 weeks",
+    description:
+      "Craft neuromorphic, futuristic interfaces, design systems, and interactive prototypes.",
+    bullets: ["Design systems", "Prototyping", "Design handoff"],
+  },
+  {
+    id: "gamedevelopment",
+    title: "Game Development",
     badge: "3D · Motion · Web",
     icon: Shapes,
     level: "Advanced",
     mode: ["Remote"],
-    durationLabel: "6–12 weeks",
+    durationLabel: "1–4 weeks",
     description:
       "Blend 3D and web — from product mockups to hero animations using modern tools.",
     bullets: ["3D scenes", "Motion graphics", "Web integration"],
-  },
-  {
-    id: "iot",
-    title: "IoT, Hardware & Smart Systems",
-    badge: "Hardware · Sensors",
-    icon: Cpu,
-    level: "Intermediate",
-    mode: ["On-site", "Hybrid"],
-    durationLabel: "8–12 weeks",
-    description:
-      "Interface sensors, microcontrollers, and dashboards to bring physical systems online.",
-    bullets: ["MCUs & sensors", "Data logging", "Dashboards"],
-  },
-  {
-    id: "growth",
-    title: "Digital Marketing & Growth Ops",
-    badge: "SEO · Social · Funnels",
-    icon: Rocket,
-    level: "Beginner Friendly",
-    mode: ["Remote"],
-    durationLabel: "4–8 weeks",
-    description:
-      "Learn how to grow brands with content, performance marketing, and analytics.",
-    bullets: ["Content calendars", "Basic SEO", "Campaign experiments"],
   },
 ];
 
@@ -133,12 +109,10 @@ const faqItems = [
 const modes: ModeType[] = ["Remote", "On-site", "Hybrid"];
 
 const durations = [
+  "1 week",
+  "2 weeks",
+  "3 weeks",
   "4 weeks",
-  "6 weeks",
-  "8 weeks",
-  "10 weeks",
-  "12 weeks",
-  "Flexible / Discuss",
 ];
 
 const InternshipsPage = () => {
@@ -514,18 +488,9 @@ const InternshipsPage = () => {
                         fullName: formData.get('fullName') as string,
                         email: formData.get('email') as string,
                         phone: formData.get('phone') as string || '',
-                        organization: formData.get('organization') as string || '',
-                        currentLevel: formData.get('currentLevel') as string,
-                        preferredTrack: formData.get('preferredTrack') as string,
-                        preferredDuration: formData.get('preferredDuration') as string,
-                        startDate: formData.get('startDate') as string || '',
-                        dailyTimeCommitment: formData.get('dailyTimeCommitment') as string || '',
-                        preferredMode: formData.get('preferredMode') as string || 'Remote',
-                        currentSkills: formData.get('currentSkills') as string || '',
-                        portfolioLinks: formData.get('portfolioLinks') as string || '',
-                        motivation: formData.get('motivation') as string,
-                        openToRelatedTracks: formData.get('openToRelatedTracks') === 'on',
-                        receiveUpdates: formData.get('receiveUpdates') === 'on',
+                        collegeName: formData.get('organization') as string || '',
+                        domain: formData.get('preferredTrack') as string,
+                        duration: formData.get('preferredDuration') as string,
                       };
 
                       await submitInternshipApplication(applicationData);
@@ -581,7 +546,7 @@ const InternshipsPage = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="text-xs text-muted-foreground mb-1 block">
-                        WhatsApp / Phone
+                        Phone Number
                       </label>
                       <Input
                         name="phone"
@@ -591,36 +556,24 @@ const InternshipsPage = () => {
                     </div>
                     <div>
                       <label className="text-xs text-muted-foreground mb-1 block">
-                        College / Organization
+                        College Name
                       </label>
                       <Input
                         name="organization"
-                        placeholder="Your college or org name"
+                        placeholder="Your college name"
                         className="glass-panel border-accent/30"
                       />
                     </div>
                   </div>
 
-                  {/* Education level + Track */}
+                  {/* Domain + Duration */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="text-xs text-muted-foreground mb-1 block">
-                        Current level
-                      </label>
-                      <select name="currentLevel" className="w-full text-xs glass-panel border border-accent/30 rounded-xl bg-background/60 px-3 py-2 outline-none focus:border-accent">
-                        <option>UG – 1st / 2nd year</option>
-                        <option>UG – 3rd / Final year</option>
-                        <option>PG student</option>
-                        <option>Working professional</option>
-                        <option>Self-taught / Other</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="text-xs text-muted-foreground mb-1 block">
-                        Preferred track
+                        Domain
                       </label>
                       <select name="preferredTrack" className="w-full text-xs glass-panel border border-accent/30 rounded-xl bg-background/60 px-3 py-2 outline-none focus:border-accent">
-                        <option>Select a track</option>
+                        <option>Select a domain</option>
                         {tracks.map((t) => (
                           <option
                             key={t.id}
@@ -632,13 +585,9 @@ const InternshipsPage = () => {
                         ))}
                       </select>
                     </div>
-                  </div>
-
-                  {/* Duration + Start date (calendar) */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="text-xs text-muted-foreground mb-1 block">
-                        Preferred duration
+                        Duration
                       </label>
                       <select name="preferredDuration" className="w-full text-xs glass-panel border border-accent/30 rounded-xl bg-background/60 px-3 py-2 outline-none focus:border-accent">
                         {durations.map((d) => (
@@ -646,110 +595,6 @@ const InternshipsPage = () => {
                         ))}
                       </select>
                     </div>
-                    <div>
-                      <label className="text-xs text-muted-foreground mb-1 block flex items-center gap-1">
-                        Desired start date
-                        <CalendarIcon className="w-3 h-3 text-accent" />
-                      </label>
-                      {/* Native calendar picker */}
-                      <Input
-                        name="startDate"
-                        type="date"
-                        className="glass-panel border-accent/30 text-xs"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Daily time + Mode */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-xs text-muted-foreground mb-1 block">
-                        Daily time you can commit
-                      </label>
-                      <Input
-                        name="dailyTimeCommitment"
-                        placeholder="e.g., 2–3 hours on weekdays, more on weekends"
-                        className="glass-panel border-accent/30 text-xs"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-xs text-muted-foreground mb-1 block">
-                        Preferred mode
-                      </label>
-                      <div className="grid grid-cols-3 gap-2 text-[11px]">
-                        {modes.map((mode) => (
-                          <label
-                            key={mode}
-                            className="flex items-center gap-2 glass-panel border border-accent/30 rounded-full px-2 py-1 cursor-pointer hover:border-accent/60"
-                          >
-                            <input
-                              type="radio"
-                              name="preferredMode"
-                              value={mode}
-                              className="accent-accent"
-                              defaultChecked={mode === "Remote"}
-                            />
-                            <span className="truncate">{mode}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Skills + Links */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-xs text-muted-foreground mb-1 block">
-                        Current skills / tools
-                      </label>
-                      <Input
-                        name="currentSkills"
-                        placeholder="e.g., React, Python, Figma, basic Linux..."
-                        className="glass-panel border-accent/30 text-xs"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-xs text-muted-foreground mb-1 block">
-                        Portfolio / GitHub / LinkedIn (optional)
-                      </label>
-                      <Input
-                        name="portfolioLinks"
-                        placeholder="Paste any relevant links"
-                        className="glass-panel border-accent/30 text-xs"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Motivation */}
-                  <div>
-                    <label className="text-xs text-muted-foreground mb-1 block">
-                      Why do you want to join this internship?
-                    </label>
-                    <textarea
-                      name="motivation"
-                      rows={4}
-                      required
-                      placeholder="Tell us what you want to learn, build, or achieve through this internship..."
-                      className="w-full text-sm glass-panel border border-accent/30 rounded-xl bg-background/60 px-3 py-2 outline-none focus:border-accent resize-none"
-                    />
-                  </div>
-
-                  {/* Extra options */}
-                  <div className="flex flex-col gap-2 text-[11px] text-muted-foreground">
-                    <label className="inline-flex items-center gap-2 cursor-pointer">
-                      <input name="openToRelatedTracks" type="checkbox" className="accent-accent" />
-                      <span>
-                        I'm open to being considered for related tracks if my
-                        primary track is full.
-                      </span>
-                    </label>
-                    <label className="inline-flex items-center gap-2 cursor-pointer">
-                      <input name="receiveUpdates" type="checkbox" className="accent-accent" />
-                      <span>
-                        I'd like to receive updates about future cohorts, workshops
-                        & openings.
-                      </span>
-                    </label>
                   </div>
 
                   <div className="flex justify-end pt-2">

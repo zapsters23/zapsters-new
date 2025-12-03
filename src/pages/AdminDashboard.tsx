@@ -5,8 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+import AdminNav from "@/components/AdminNav";
 import { getBlogPosts } from "@/lib/blogService";
 import { getContactSubmissions } from "@/lib/contactService";
 import { Eye, Edit, Trash2, Users, MessageSquare, Calendar, Mail } from "lucide-react";
@@ -38,9 +37,9 @@ const AdminDashboard = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      <AdminNav />
 
-      <section className="pt-32 pb-16">
+      <section className="pt-16 pb-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-4xl font-bold mb-8">Admin Dashboard</h1>
@@ -228,8 +227,6 @@ const AdminDashboard = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };

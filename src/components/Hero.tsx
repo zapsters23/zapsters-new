@@ -60,22 +60,21 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {/* Gradient primary CTA, same style as other pages */}
+            <Link to="/internships">
+              <Button 
+                variant="glass" 
+                size="lg" 
+                className="rounded-full"
+              >
+                Apply for Free Internship
+              </Button>
+            </Link>
             <Link to="/contact">
               <GradientButton className="group rounded-full">
                 Join Our Community
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </GradientButton>
             </Link>
-
-            {/* Secondary glass CTA, sized to match */}
-            <Button 
-              variant="glass" 
-              size="lg" 
-              className="rounded-full"
-              onClick={() => setIsQuoteModalOpen(true)}
-            >
-              Get a Free Quote
-            </Button>
           </div>
 
           <div className="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto">

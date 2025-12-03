@@ -4,8 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+import AdminNav from "@/components/AdminNav";
 import { getBlogPosts } from "@/lib/blogService";
 import { Eye, Edit, Trash2 } from "lucide-react";
 
@@ -24,9 +23,9 @@ const AdminBlog = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      <AdminNav />
 
-      <section className="pt-32 pb-16">
+      <section className="pt-16 pb-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h1 className="text-4xl font-bold mb-8">Admin - All Blog Posts</h1>
@@ -88,8 +87,6 @@ const AdminBlog = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };
