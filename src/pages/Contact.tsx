@@ -46,7 +46,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     const form = e.currentTarget;
-    
+
     try {
       const formData = new FormData(form);
       const contactData = {
@@ -66,7 +66,7 @@ const Contact = () => {
       };
 
       await submitContactForm(contactData);
-      
+
       toast({
         title: "Form submitted successfully!",
         description: "We'll get back to you within 24-48 hours.",
@@ -146,14 +146,14 @@ const Contact = () => {
                 </div>
               </div>
 
-               <div className="flex flex-wrap gap-3 text-xs text-muted-foreground">
-                 <span className="glass-panel rounded-full px-3 py-1">
-                   We don&apos;t share your details with anyone.
-                 </span>
-                 <span className="glass-panel rounded-full px-3 py-1">
-                   Prefer WhatsApp? Mention it in the form.
-                 </span>
-               </div>
+              <div className="flex flex-wrap gap-3 text-xs text-muted-foreground">
+                <span className="glass-panel rounded-full px-3 py-1">
+                  We don&apos;t share your details with anyone.
+                </span>
+                <span className="glass-panel rounded-full px-3 py-1">
+                  Prefer WhatsApp? Mention it in the form.
+                </span>
+              </div>
             </div>
 
             {/* Right stats / quick info */}
@@ -346,7 +346,9 @@ const Contact = () => {
                       </label>
                       <select name="projectType" className="w-full text-xs glass-panel border border-accent/30 rounded-xl bg-background/60 px-3 py-2 outline-none focus:border-accent">
                         <option>Select one</option>
+                        <option>Startups / MVP</option>
                         <option>Website / Product build</option>
+                        <option>AI & ML Solutions</option>
                         <option>UI/UX & Branding</option>
                         <option>Internship / College tie-up</option>
                         <option>Workshop / Guest session</option>
@@ -485,9 +487,9 @@ const Contact = () => {
                   </div>
 
                   <div className="flex justify-end pt-2">
-                     {/* Gradient submit button like other pages */}
-                    <GradientButton 
-                      type="submit" 
+                    {/* Gradient submit button like other pages */}
+                    <GradientButton
+                      type="submit"
                       disabled={isSubmitting}
                       className="rounded-full flex items-center gap-2"
                     >
@@ -564,11 +566,11 @@ const Contact = () => {
                   </span>{" "}
                   but collaborate with students & teams across time zones.
                 </p>
-               <div className="text-xs space-y-1 text-muted-foreground">
-                 <p>Remote-first, project-based teams.</p>
-                 <p>Open to college / campus collaborations.</p>
-                 <p>Comfortable with async global communication.</p>
-               </div>
+                <div className="text-xs space-y-1 text-muted-foreground">
+                  <p>Remote-first, project-based teams.</p>
+                  <p>Open to college / campus collaborations.</p>
+                  <p>Comfortable with async global communication.</p>
+                </div>
               </Card>
 
               <Card className="glass-panel border-accent/25 p-5">
@@ -631,23 +633,23 @@ const Contact = () => {
 
               {/* Quick map actions */}
               {/* Quick map actions */}
-<div className="mt-4 flex flex-wrap gap-2 text-[11px]">
+              <div className="mt-4 flex flex-wrap gap-2 text-[11px]">
 
-  <GradientButton
-    className="rounded-full text-[11px] px-4 py-2"
-    onClick={() => window.open(mapsPlaceUrl, "_blank")}
-  >
-    Open in Google Maps
-  </GradientButton>
+                <GradientButton
+                  className="rounded-full text-[11px] px-4 py-2"
+                  onClick={() => window.open(mapsPlaceUrl, "_blank")}
+                >
+                  Open in Google Maps
+                </GradientButton>
 
-  <GradientButton
-    className="rounded-full text-[11px] px-4 py-2"
-    onClick={() => window.open(mapsDirectionsUrl, "_blank")}
-  >
-    Get Directions
-  </GradientButton>
+                <GradientButton
+                  className="rounded-full text-[11px] px-4 py-2"
+                  onClick={() => window.open(mapsDirectionsUrl, "_blank")}
+                >
+                  Get Directions
+                </GradientButton>
 
-</div>
+              </div>
 
             </div>
 

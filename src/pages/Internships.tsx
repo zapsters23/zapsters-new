@@ -15,6 +15,7 @@ import {
   Calendar as CalendarIcon,
   CheckCircle2,
   Sparkles,
+  Brain,
 } from "lucide-react";
 
 import Navigation from "@/components/Navigation";
@@ -76,6 +77,18 @@ const tracks: InternshipTrack[] = [
     description:
       "Craft neuromorphic, futuristic interfaces, design systems, and interactive prototypes.",
     bullets: ["Design systems", "Prototyping", "Design handoff"],
+  },
+  {
+    id: "aiml",
+    title: "AI & Machine Learning",
+    badge: "Python · LLMs · Agents",
+    icon: Brain,
+    level: "Advanced",
+    mode: ["Remote", "Hybrid"],
+    durationLabel: "4–8 weeks",
+    description:
+      "Train models, fine-tune LLMs, and build intelligent agents using modern AI stacks.",
+    bullets: ["TensorFlow / PyTorch", "Generative AI", "Computer Vision"],
   },
   {
     id: "gamedevelopment",
@@ -258,138 +271,137 @@ const InternshipsPage = () => {
       </section>
 
       {/* TRACKS GRID */}
-<section id="internship-tracks" className="pb-16">
-  <div className="container mx-auto px-4 lg:px-8">
-    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
-      <div>
-        <h2 className="text-2xl md:text-3xl font-bold mb-1">
-          Choose your <span className="neon-text">track</span>
-        </h2>
-        <p className="text-sm text-muted-foreground max-w-xl">
-          You can apply for one primary track and mention secondary interests
-          in the form. We’ll match you to the best cohort.
-        </p>
-      </div>
-
-      <div className="flex flex-wrap gap-2 items-center">
-        <span className="text-[11px] text-muted-foreground">
-          Filter by mode:
-        </span>
-        <Button
-          variant={selectedModeFilter === "All" ? "hero" : "glass"}
-          size="sm"
-          className="rounded-full text-xs"
-          onClick={() => setSelectedModeFilter("All")}
-        >
-          All
-        </Button>
-        {modes.map((mode) => (
-          <Button
-            key={mode}
-            variant={selectedModeFilter === mode ? "hero" : "glass"}
-            size="sm"
-            className="rounded-full text-xs"
-            onClick={() => setSelectedModeFilter(mode)}
-          >
-            {mode}
-          </Button>
-        ))}
-      </div>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7">
-      {filteredTracks.map((track, idx) => {
-        const Icon = track.icon;
-        const isSelected = selectedTrack === track.id;
-
-        return (
-          <PixelCard
-            key={track.id}
-            variant="pink"
-            className={`group animate-fade-in-up h-full ${
-              isSelected
-                ? "ring-2 ring-accent/70 shadow-[0_0_25px_rgba(255,0,80,0.35)]"
-                : ""
-            }`}
-            style={{ animationDelay: `${idx * 0.06}s` }}
-          >
-            {/* Make the inner area clickable instead of PixelCard itself */}
-            <button
-              type="button"
-              className="p-6 flex flex-col h-full w-full text-left"
-              onClick={() =>
-                setSelectedTrack((prev) =>
-                  prev === track.id ? null : track.id
-                )
-              }
-            >
-              <div className="flex items-start justify-between gap-3 mb-4">
-                <div className="flex items-center gap-3">
-                  <span className="w-10 h-10 rounded-2xl glass-panel border border-accent/40 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Icon className="w-5 h-5 text-accent" />
-                  </span>
-                  <div>
-                    <h3 className="text-lg font-semibold text-foreground">
-                      {track.title}
-                    </h3>
-                    <p className="text-[11px] uppercase tracking-wide text-accent">
-                      {track.badge}
-                    </p>
-                  </div>
-                </div>
-                <span className="px-2 py-1 rounded-full text-[10px] bg-accent/10 text-accent border border-accent/40">
-                  {track.level}
-                </span>
-              </div>
-
-              <p className="text-sm text-muted-foreground mb-3">
-                {track.description}
+      <section id="internship-tracks" className="pb-16">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-1">
+                Choose your <span className="neon-text">track</span>
+              </h2>
+              <p className="text-sm text-muted-foreground max-w-xl">
+                You can apply for one primary track and mention secondary interests
+                in the form. We’ll match you to the best cohort.
               </p>
+            </div>
 
-              <div className="flex flex-wrap gap-2 mb-3 text-[10px]">
-                <span className="px-2 py-1 rounded-full glass-panel border border-accent/30 flex items-center gap-1">
-                  <Clock className="w-3 h-3" />
-                  <span>{track.durationLabel}</span>
-                </span>
-                {track.mode.map((mode) => (
-                  <span
-                    key={mode}
-                    className="px-2 py-1 rounded-full glass-panel border border-accent/20 text-muted-foreground"
-                  >
-                    {mode}
-                  </span>
-                ))}
-              </div>
-
-              <ul className="text-xs text-muted-foreground space-y-1 mb-4">
-                {track.bullets.map((b) => (
-                  <li key={b} className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent/70" />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-
+            <div className="flex flex-wrap gap-2 items-center">
+              <span className="text-[11px] text-muted-foreground">
+                Filter by mode:
+              </span>
               <Button
-                variant={isSelected ? "hero" : "glass"}
+                variant={selectedModeFilter === "All" ? "hero" : "glass"}
                 size="sm"
-                className="mt-auto w-fit rounded-full text-xs"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedTrack(track.id);
-                  const el = document.getElementById("internship-form");
-                  el?.scrollIntoView({ behavior: "smooth" });
-                }}
+                className="rounded-full text-xs"
+                onClick={() => setSelectedModeFilter("All")}
               >
-                Choose this track
+                All
               </Button>
-            </button>
-          </PixelCard>
-        );
-      })}
-    </div>
-  </div>
-</section>
+              {modes.map((mode) => (
+                <Button
+                  key={mode}
+                  variant={selectedModeFilter === mode ? "hero" : "glass"}
+                  size="sm"
+                  className="rounded-full text-xs"
+                  onClick={() => setSelectedModeFilter(mode)}
+                >
+                  {mode}
+                </Button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7">
+            {filteredTracks.map((track, idx) => {
+              const Icon = track.icon;
+              const isSelected = selectedTrack === track.id;
+
+              return (
+                <PixelCard
+                  key={track.id}
+                  variant="pink"
+                  className={`group animate-fade-in-up h-full ${isSelected
+                    ? "ring-2 ring-accent/70 shadow-[0_0_25px_rgba(255,0,80,0.35)]"
+                    : ""
+                    }`}
+                  style={{ animationDelay: `${idx * 0.06}s` }}
+                >
+                  {/* Make the inner area clickable instead of PixelCard itself */}
+                  <button
+                    type="button"
+                    className="p-6 flex flex-col h-full w-full text-left"
+                    onClick={() =>
+                      setSelectedTrack((prev) =>
+                        prev === track.id ? null : track.id
+                      )
+                    }
+                  >
+                    <div className="flex items-start justify-between gap-3 mb-4">
+                      <div className="flex items-center gap-3">
+                        <span className="w-10 h-10 rounded-2xl glass-panel border border-accent/40 flex items-center justify-center group-hover:scale-110 transition-transform">
+                          <Icon className="w-5 h-5 text-accent" />
+                        </span>
+                        <div>
+                          <h3 className="text-lg font-semibold text-foreground">
+                            {track.title}
+                          </h3>
+                          <p className="text-[11px] uppercase tracking-wide text-accent">
+                            {track.badge}
+                          </p>
+                        </div>
+                      </div>
+                      <span className="px-2 py-1 rounded-full text-[10px] bg-accent/10 text-accent border border-accent/40">
+                        {track.level}
+                      </span>
+                    </div>
+
+                    <p className="text-sm text-muted-foreground mb-3">
+                      {track.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mb-3 text-[10px]">
+                      <span className="px-2 py-1 rounded-full glass-panel border border-accent/30 flex items-center gap-1">
+                        <Clock className="w-3 h-3" />
+                        <span>{track.durationLabel}</span>
+                      </span>
+                      {track.mode.map((mode) => (
+                        <span
+                          key={mode}
+                          className="px-2 py-1 rounded-full glass-panel border border-accent/20 text-muted-foreground"
+                        >
+                          {mode}
+                        </span>
+                      ))}
+                    </div>
+
+                    <ul className="text-xs text-muted-foreground space-y-1 mb-4">
+                      {track.bullets.map((b) => (
+                        <li key={b} className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-accent/70" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Button
+                      variant={isSelected ? "hero" : "glass"}
+                      size="sm"
+                      className="mt-auto w-fit rounded-full text-xs"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedTrack(track.id);
+                        const el = document.getElementById("internship-form");
+                        el?.scrollIntoView({ behavior: "smooth" });
+                      }}
+                    >
+                      Choose this track
+                    </Button>
+                  </button>
+                </PixelCard>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
 
       {/* REGISTRATION FORM */}
@@ -488,13 +500,21 @@ const InternshipsPage = () => {
                         fullName: formData.get('fullName') as string,
                         email: formData.get('email') as string,
                         phone: formData.get('phone') as string || '',
-                        collegeName: formData.get('organization') as string || '',
-                        domain: formData.get('preferredTrack') as string,
-                        duration: formData.get('preferredDuration') as string,
+                        organization: formData.get('organization') as string || '',
+                        preferredTrack: formData.get('preferredTrack') as string || 'Not Specified',
+                        preferredDuration: formData.get('preferredDuration') as string || 'Not Specified',
+                        preferredMode: formData.get('preferredMode') as string || 'Remote',
+                        currentLevel: formData.get('currentLevel') as string || 'Student',
+                        motivation: formData.get('motivation') as string || '',
+                        openToRelatedTracks: true, // Default to true or add checkbox
+                        receiveUpdates: formData.get('receiveUpdates') === 'on',
+                        // Optional fields if needed
+                        currentSkills: '',
+                        portfolioLinks: '',
                       };
 
                       await submitInternshipApplication(applicationData);
-                      
+
                       toast({
                         title: "Application submitted successfully!",
                         description: "We'll review your application and get back to you soon.",
@@ -597,8 +617,51 @@ const InternshipsPage = () => {
                     </div>
                   </div>
 
+                  {/* Mode + Level */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-xs text-muted-foreground mb-1 block">
+                        Preferred Mode
+                      </label>
+                      <select name="preferredMode" className="w-full text-xs glass-panel border border-accent/30 rounded-xl bg-background/60 px-3 py-2 outline-none focus:border-accent">
+                        <option>Remote</option>
+                        <option>Hybrid</option>
+                        <option>On-site</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="text-xs text-muted-foreground mb-1 block">
+                        Current Level
+                      </label>
+                      <select name="currentLevel" className="w-full text-xs glass-panel border border-accent/30 rounded-xl bg-background/60 px-3 py-2 outline-none focus:border-accent">
+                        <option>Student / Beginner</option>
+                        <option>Intermediate (Have built projects)</option>
+                        <option>Advanced / Pro</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Motivation */}
+                  <div>
+                    <label className="text-xs text-muted-foreground mb-1 block">
+                      Why do you want to join? (Motivation)
+                    </label>
+                    <textarea
+                      name="motivation"
+                      rows={3}
+                      placeholder="Tell us about your goals or past projects..."
+                      className="w-full text-sm glass-panel border border-accent/30 rounded-xl bg-background/60 px-3 py-2 outline-none focus:border-accent resize-none"
+                    />
+                  </div>
+
+                  {/* Updates Checkbox */}
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <input type="checkbox" name="receiveUpdates" className="accent-accent" />
+                    <span>Receive updates about future opportunities</span>
+                  </div>
+
                   <div className="flex justify-end pt-2">
-                    <GradientButton 
+                    <GradientButton
                       type="submit"
                       disabled={isSubmitting}
                       className="rounded-full flex items-center gap-2"
